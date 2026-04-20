@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>internship reflections — city parks foundation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #faf7f2;
+      --warm-white: #fffefb;
+      --ink: #2c2825;
+      --soft-ink: #5a534c;
+      --lighter-ink: #9b9189;
+      --accent: #c9a87c;
+      --accent-light: #eddfc8;
+      --rule: #e8e1d6;
+      --green: #7a9e7e;
+    }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+
+    /* ── Header ── */
+    header {
+      padding: 4rem 2rem 2rem;
+      text-align: center;
+      border-bottom: 1px solid var(--rule);
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .site-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--lighter-ink);
+      margin-bottom: 1.2rem;
+    }
+
+    header h1 {
+      font-family: 'Lora', serif;
+      font-weight: 400;
+      font-size: 1.7rem;
+      color: var(--ink);
+      line-height: 1.3;
+    }
+
+    header h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .header-meta {
+      margin-top: 0.8rem;
+      font-size: 0.82rem;
+      color: var(--lighter-ink);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── Nav ── */
+    nav {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 1.4rem 2rem;
+      display: flex;
+      gap: 1.8rem;
+      border-bottom: 1px solid var(--rule);
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--lighter-ink);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    nav a:hover, nav a.active { color: var(--ink); }
+
+    /* ── Main content ── */
+    main {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 2rem 6rem;
+    }
+
+    /* ── Entry ── */
+    .entry {
+      padding: 3.5rem 0 2.5rem;
+      border-bottom: 1px solid var(--rule);
+      opacity: 0;
+      transform: translateY(14px);
+      animation: fadeUp 0.55s ease forwards;
+    }
+
+    .entry:nth-child(1) { animation-delay: 0.05s; }
+    .entry:nth-child(2) { animation-delay: 0.12s; }
+    .entry:nth-child(3) { animation-delay: 0.19s; }
+    .entry:nth-child(4) { animation-delay: 0.26s; }
+    .entry:nth-child(5) { animation-delay: 0.33s; }
+    .entry:nth-child(6) { animation-delay: 0.40s; }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .entry-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 0.3rem;
+      flex-wrap: wrap;
+    }
+
+    .entry-num {
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 400;
+    }
+
+    .entry-date {
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      color: var(--lighter-ink);
+    }
+
+    .entry h2 {
+      font-family: 'Lora', serif;
+      font-weight: 400;
+      font-size: 1.35rem;
+      line-height: 1.35;
+      color: var(--ink);
+      margin-bottom: 1.4rem;
+    }
+
+    .entry h2 em { font-style: italic; }
+
+    .entry p {
+      font-size: 0.95rem;
+      color: var(--soft-ink);
+      line-height: 1.85;
+      margin-bottom: 1rem;
+    }
+
+    .entry p:last-child { margin-bottom: 0; }
+
+    /* pull-quote */
+    .pull {
+      border-left: 2px solid var(--accent-light);
+      margin: 1.6rem 0;
+      padding: 0.4rem 1.4rem;
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: 1.02rem;
+      color: var(--ink);
+      line-height: 1.65;
+    }
+
+    /* small tag chips */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.6rem;
+    }
+
+    .tag {
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: 1px solid var(--rule);
+      color: var(--lighter-ink);
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+    }
+
+    .tag.green { border-color: var(--green); color: var(--green); }
+    .tag.warm  { border-color: var(--accent); color: var(--accent); }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 3rem 2rem;
+      font-size: 0.75rem;
+      color: var(--lighter-ink);
+      letter-spacing: 0.06em;
+      border-top: 1px solid var(--rule);
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    footer span { color: var(--accent); }
+
+    /* ── Divider dot ── */
+    .dot-divider {
+      text-align: center;
+      color: var(--accent-light);
+      font-size: 1.1rem;
+      letter-spacing: 0.4em;
+      margin: 0.4rem 0 0;
+    }
+
+    @media (max-width: 500px) {
+      header h1 { font-size: 1.35rem; }
+      .entry h2  { font-size: 1.18rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <p class="site-label">Internship Reflection · Spring 2026</p>
+  <h1>three months inside a city's<br /><em>digital back office</em></h1>
+  <p class="header-meta">City Parks Foundation &nbsp;·&nbsp; Digital Systems Intern &nbsp;·&nbsp; Feb – May 2026</p>
+</header>
+
+<nav>
+  <a href="#overview" class="active">Overview</a>
+  <a href="#industry">Industry</a>
+  <a href="#culture">Culture</a>
+  <a href="#self">Self</a>
+  <a href="#academics">Academics</a>
+  <a href="#next">What's Next</a>
+</nav>
+
+<main>
+
+  <!-- 01 Overview -->
+  <article class="entry" id="overview">
+    <div class="entry-header">
+      <span class="entry-num">01</span>
+      <span class="entry-date">February 2026</span>
+    </div>
+    <h2>What I actually did — and what I<br /><em>thought</em> I was going to do</h2>
+    <p>
+      I came in expecting to tidy some folders. What I got was a semester-long exercise in organizational archaeology. My main task as a Digital Systems Intern at City Parks Foundation was to come up with a game plan to audit and reorganize over 1,000 files spread across 20+ shared Google Drive folders, years of accumulated naming conventions, abandoned projects, and mystery PDFs that no one could quite explain.
+    </p>
+    <div class="pull">
+      "Why is this 2019 grant draft living inside the Summer Programs folder? Who named a file 'FINAL_v3_REAL_USE THIS ONE'?"
+    </div>
+    <p>
+      Beyond the files themselves, I conducted 16 stakeholder interviews with staff to understand how they actually used Drive day-to-day and where the friction was. I synthesized that feedback into a set of naming, sharing, and permissions guidelines. I also drafted onboarding and offboarding protocols so that when someone joins or leaves CPF, their digital access is handled securely and consistently.
+    </p>
+    <p>
+      My goals going in were to be genuinely useful (not just busy), to learn how real organizations manage their technology, and to practice translating messy information into clear systems. The biggest challenge was balancing thoroughness with pace; there was a lot to document, and I had to learn when "good enough and shipped" beats "perfect and pending."
+    </p>
+    <div class="tags">
+      <span class="tag">Google Workspace</span>
+      <span class="tag">Systems Thinking</span>
+      <span class="tag">Documentation</span>
+    </div>
+  </article>
+
+  <!-- 02 Industry -->
+  <article class="entry" id="industry">
+    <div class="entry-header">
+      <span class="entry-num">02</span>
+      <span class="entry-date">February – March 2026</span>
+    </div>
+    <h2>What the <em>nonprofit tech world</em> actually looks like</h2>
+    <p>
+      I had worked at several techical roles before, so I assumed I understood how organizations use digital tools. I was wrong. Nonprofits operate with a very different relationship to technology: one shaped by tight budgets, high staff turnover, and the fact that IT is rarely anyone's primary job.
+    </p>
+    <p>
+      What surprised me most was how much institutional knowledge lived inside people's heads (or personal drives) rather than in shared systems. When a program director leaves, they often take an entire mental map of where things are with them. That's not negligence; it's a structural problem, and solving it is genuinely high-stakes work.
+    </p>
+    <div class="pull">
+      Technology in the nonprofit sector is less about cutting-edge tools and more about making reliable, human-centered systems that survive staff transitions.
+    </div>
+    <p>
+      I found this framing really compelling. It's a field I'd like to stay close to, specifically at the intersection of organizational design and digital infrastructure. The work felt meaningful in a way that's hard to manufacture: better file organization directly supports the staff who run youth programs and community events every day.
+    </p>
+    <div class="tags">
+      <span class="tag">Nonprofit Sector</span>
+      <span class="tag">Knowledge Management</span>
+      <span class="tag">Change Management</span>
+    </div>
+  </article>
+
+  <!-- 03 Culture -->
+  <article class="entry" id="culture">
+    <div class="entry-header">
+      <span class="entry-num">03</span>
+      <span class="entry-date">March 2026</span>
+    </div>
+    <h2>Learning the unwritten rules<br />of a <em>mission-driven</em> workplace</h2>
+    <p>
+      City Parks Foundation's culture is built around genuine care — for the parks, the communities they serve, and each other. That sounds like a mission statement, but I actually felt it in the way my supervisor checked in with me, how staff responded to my interview requests (universally warm and generous with their time), and in the candor people brought to conversations about what wasn't working.
+    </p>
+    <p>
+      The organization is also notably diverse, both in terms of the communities it serves and in who works there. Sitting in on team meetings, I noticed that decision-making processes were often slower and more consultative than I expected which initially felt inefficient, but I came to understand as intentional. Centering staff voices, especially those from the communities CPF works with, is a value that shapes how the organization moves.
+    </p>
+    <p>
+      As an intern, I sometimes navigated the tension of being new and external. I was asking people to change their habits, which requires trust that has to be earned. I learned to lead with curiosity rather than prescription, and to frame my recommendations as options rather than mandates. That shift changed how people engaged with me.
+    </p>
+    <div class="tags">
+      <span class="tag">Organizational Culture</span>
+      <span class="tag">Inclusion</span>
+      <span class="tag">Listening</span>
+    </div>
+  </article>
+
+  <!-- 04 Self Assessment -->
+  <article class="entry" id="self">
+    <div class="entry-header">
+      <span class="entry-num">04</span>
+      <span class="entry-date">March – April 2026</span>
+    </div>
+    <h2>Finding out what I'm<br /><em>actually</em> good at</h2>
+    <p>
+      I already suspected I was organized. What I learned is that I'm specifically good at <em>making sense of other people's systems</em> and not just imposing my own. During the file audit, I had to resist the urge to immediately "fix" things according to my own logic. Instead, I documented what I found, looked for the patterns staff actually used, and built recommendations that met people where they were.
+    </p>
+    <div class="pull">
+      The strength that surprised me most: I'm good at making people feel heard in an interview, even when I'm asking them to surface frustrations.
+    </div>
+    <p>
+      A concrete challenge: midway through, I realized my naming convention draft was too complicated. I had eight different rules covering every edge case. When I tested it with two staff members, they glazed over on rule three. I scrapped it and started from three core principles, with examples for each. It was humbling to throw away work, but the simpler version was genuinely better.
+    </p>
+    <p>
+      In terms of NACE competencies, this experience most directly built my skills in <strong>critical thinking</strong> (synthesizing interview data into recommendations), <strong>communication</strong> (writing guides for non-technical audiences), and <strong>professionalism</strong> (navigating a real workplace with care and accountability).
+    </p>
+    <div class="tags">
+      <span class="tag">NACE: Critical Thinking</span>
+      <span class="tag">NACE: Communication</span>
+      <span class="tag">NACE: Professionalism</span>
+    </div>
+  </article>
+
+  <!-- 05 Academic Connections -->
+  <article class="entry" id="academics">
+    <div class="entry-header">
+      <span class="entry-num">05</span>
+      <span class="entry-date">April 2026</span>
+    </div>
+    <h2>Where the classroom and the<br /><em>drive folder</em> actually meet</h2>
+    <p>
+      My coursework in information management and organizational behavior felt abstract until this internship made them concrete. A framework I'd read about, the idea that organizations are information-processing systems, finally clicked when I watched CPF staff spend twenty minutes searching for a single form because no one remembered which folder it lived in.
+    </p>
+    <p>
+      My writing classes have paid off in unexpected ways too. Drafting a staff guide isn't so different from writing a clear argument: you have to know your audience, front-load the most important information, and cut anything that adds length without adding clarity. The feedback loop here was faster and more honest than any classroom critique; if staff couldn't follow a guide, I heard about it quickly.
+    </p>
+    <p>
+      Going forward, I want to bring more of this applied lens to my coursework. I'm planning to take a class on digital equity and I find myself thinking about access and infrastructure in much more tangible ways than I did before.
+    </p>
+    <div class="tags">
+      <span class="tag">Information Systems</span>
+      <span class="tag">Org Behavior</span>
+      <span class="tag">Writing</span>
+    </div>
+  </article>
+
+  <!-- 06 What's Next -->
+  <article class="entry" id="next">
+    <div class="entry-header">
+      <span class="entry-num">06</span>
+      <span class="entry-date">Looking ahead</span>
+    </div>
+    <h2>Next steps, and the career I'm<br /><em>starting to picture</em></h2>
+    <p>
+      This experience clarified something I hadn't quite named before: I want to work on the systems that organizations run on, not just the programs they deliver. The role of someone who sits between technology and people — translating, simplifying, building trust — feels like the right fit for how I think and work.
+    </p>
+    <p>
+      Concretely, I'm planning to explore roles in nonprofit operations, IT project coordination, and knowledge management. I'll be interning in project management this June and I have started researching about the relevant frameworks used. I'm also considering a certificate in project management to formalize skills I've been building informally.
+    </p>
+    <div class="pull">
+      I used to think "operations" was the unglamorous side of mission-driven work. I think it might be the most important side.
+    </div>
+    <p>
+      The biggest takeaway from this internship isn't a skill or a line on my résumé. It's the realization that I find genuine satisfaction in making things clearer, calmer, and easier for the people around me. That feels like a good foundation to build on.
+    </p>
+    <div class="tags">
+      <span class="tag">Civic Tech</span>
+      <span class="tag">Project Mgmt</span>
+      <span class="tag">Nonprofit Ops</span>
+    </div>
+    <div class="dot-divider">· · ·</div>
+  </article>
+
+</main>
+
+<footer>
+  City Parks Foundation · Digital Systems Internship · Spring 2026<br />
+  <span>♡</span> written as part of an experiential learning reflection
+</footer>
+
+</body>
+</html>
